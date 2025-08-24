@@ -1,0 +1,126 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* --- Стили для Кнопок Управления --- */
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.control-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    /* Базовый, серый стиль как на изображении */
+    background-color: #d1d1d1;
+    color: #333;
+}
+
+/* Отдельные стили для кнопок, если они станут цветными */
+.control-btn:hover {
+    background-color: #c0c0c0;
+}
+
+
+/* --- Стили для Контейнера Уведомлений --- */
+/* Контейнер располагается в правом верхнем углу (или относительно блока) */
+.toast-container {
+    position: absolute;
+    top: 50px; /* Отступ сверху */
+    right: 50px; /* Отступ справа */
+    z-index: 1000; /* Чтобы уведомления были поверх всего */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Расстояние между уведомлениями */
+}
+
+/* --- Стили для Уведомлений (Toast) --- */
+.toast {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    border-radius: 8px; /* Скругленные углы */
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    max-width: 350px;
+    opacity: 0; /* Изначально скрыто */
+    transform: translateX(100%); /* Сдвинуто вправо */
+    animation: slideIn 0.3s forwards, fadeOut 0.5s 2.5s forwards; /* Анимация появления и исчезновения */
+}
+
+.toast-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.toast-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.toast-description {
+    font-size: 0.85em;
+    font-weight: 400;
+    margin: 3px 0 0;
+    line-height: 1.2;
+}
+
+.toast-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    margin-left: 10px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.toast-close-btn:hover {
+    opacity: 1;
+}
+
+/* --- Цветовые Вариации Уведомлений --- */
+
+/* Success / Well done! */
+.success {
+    background-color: #609d84; /* Зеленый/Мятный цвет */
+}
+/* Warning / Warning! */
+.warning {
+    background-color: #d8964e; /* Оранжевый/Желтый цвет */
+}
+/* Error / Fail / Oh snap! */
+.error {
+    background-color: #d9534f; /* Красный цвет */
+}
+
+/* --- Анимации --- */
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0); /* Сдвигается в видимую область */
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translateX(100%); /* Уезжает вправо */
+    }
+}
